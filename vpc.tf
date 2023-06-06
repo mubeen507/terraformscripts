@@ -66,3 +66,17 @@ resource "aws_internet_gateway" "big-vpc-igw" {
   }
 }
 
+# Public Route Table
+resource "aws_route_table" "big-vpc-pub-rt" {
+  vpc_id = aws_vpc.big-vpc.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.big-vpc-igw.id
+  }
+
+  tags = {
+    Name = "big-pub-route"
+  }
+}
+
