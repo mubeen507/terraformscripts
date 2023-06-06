@@ -57,3 +57,12 @@ resource "aws_subnet" "big-pvt-sn-B" {
   }
 }
 
+# Intrenet Gateway
+resource "aws_internet_gateway" "big-vpc-igw" {
+  vpc_id = aws_vpc.big-vpc.id
+
+  tags = {
+    Name = "big-vpc-igw"
+  }
+}
+
