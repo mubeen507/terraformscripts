@@ -80,3 +80,12 @@ resource "aws_route_table" "big-vpc-pub-rt" {
   }
 }
 
+# Private Route Table
+resource "aws_route_table" "big-vpc-pvt-rt" {
+  vpc_id = aws_vpc.big-vpc.id
+
+  tags = {
+    Name = "big-pvt-route"
+  }
+}
+
