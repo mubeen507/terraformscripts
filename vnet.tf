@@ -10,3 +10,4 @@ resource "azurerm_virtual_network" "tf-7am-vnet" {
   }
 }
 
+
