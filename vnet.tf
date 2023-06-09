@@ -51,3 +51,9 @@ resource "azurerm_network_security_group" "tf-7am-nsg" {
     environment = "dev"
   }
 }
+
+# Associate Subnet with NSG
+resource "azurerm_subnet_network_security_group_association" "tf-7am-nsg-sn" {
+  subnet_id                 = azurerm_subnet.tf-7am-sn.id
+  network_security_group_id = azurerm_network_security_group.tf-7am-nsg.id
+}
