@@ -69,3 +69,17 @@ resource "azurerm_public_ip" "tf-7am-pip" {
     environment = "dev"
   }
 }
+
+# NIC
+resource "azurerm_network_interface" "tf-7am-nic" {
+  name                = "web-nic"
+  location            = azurerm_resource_group.tf-7am-rg.location
+  resource_group_name = azurerm_resource_group.tf-7am-rg.name
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.tf-7am-sn.id
+    private_ip_address_allocation = "Dynamic"
+    public_ip_address_id = azurerm_public_ip.tf-7am-pip.id
+  }
+}
