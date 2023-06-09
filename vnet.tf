@@ -57,3 +57,15 @@ resource "azurerm_subnet_network_security_group_association" "tf-7am-nsg-sn" {
   subnet_id                 = azurerm_subnet.tf-7am-sn.id
   network_security_group_id = azurerm_network_security_group.tf-7am-nsg.id
 }
+
+# Public IP
+resource "azurerm_public_ip" "tf-7am-pip" {
+  name                = "web-pip"
+  resource_group_name = azurerm_resource_group.tf-7am-rg.name
+  location            = azurerm_resource_group.tf-7am-rg.location
+  allocation_method   = "Static"
+
+  tags = {
+    environment = "dev"
+  }
+}
